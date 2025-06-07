@@ -52,4 +52,23 @@ export class AuthService {
     const headers = this.getAuthHeaders();
     return this.http.get<any>(`${this.apiUrl}/profile`, { headers });
   }
+
+  getUserId(): number | null {
+    const token = this.getToken();
+    return token ? this.getUserIdFromToken(token) : null;
+  }
+
+  private getUserIdFromToken(token: string): number | null {
+    try {
+      const tokenParts = token.split('.');
+      if (tokenParts.length !== 3) {
+        throw new Error('Érvénytelen JWT token');
+      }
+      const decodedPayload = JSON.parse(atob(tokenParts[1]));
+      return decodedPayload.id;
+    } catch (error) {
+      console.error('Hibás token dekódolás:', error);
+      return null;
+    }
+  }
 }
