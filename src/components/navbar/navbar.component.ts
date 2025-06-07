@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { IBasketContent } from '../../interfaces/basket';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,14 @@ export class NavbarComponent {
   searchValue:string = ''
   basketContent: IBasketContent[] = []
 
-  constructor(public cartService: CartService) {}
+  constructor(public cartService: CartService, private router: Router) {}
+
+  goToProfile() {
+    this.router.navigate(['profile']); 
+  }
+  goToMain() {
+    this.router.navigate(['main']); 
+  }
 
 
 }

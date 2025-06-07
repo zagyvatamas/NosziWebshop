@@ -2,7 +2,7 @@
   <div class="navbar-inner">
 
     <div class="navbar-brand">
-      <img src="assets/noszilogo.png" alt="Logo" class="logo" />
+      <button (click)="goToMain()"><img src="assets/noszilogo.png" alt="Logo" class="logo" /></button>
     </div>
 
     <div class="search-container">
@@ -10,7 +10,9 @@
     </div>
 
     <div class="navbar-toolbox">
-      <ion-icon name="person-circle-outline" class="custom-icon"></ion-icon>
+      <button (click)="goToProfile()">
+        <ion-icon name="person-circle-outline" class="custom-icon"></ion-icon>
+      </button>
 
       <select class="lang-select">
         <option value="hu">HU</option>

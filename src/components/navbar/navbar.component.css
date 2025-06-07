@@ -98,3 +98,9 @@
   }
 }
 
+button{
+  margin-top: 6px;
+  background-color: transparent;
+  border: none;
+}
+
