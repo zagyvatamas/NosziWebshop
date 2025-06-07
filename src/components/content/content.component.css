@@ -1,0 +1,6 @@
+.main {
+    height: max-content;
+    width: max-content;
+    min-width: 800px;
+    padding: 20px;
+}

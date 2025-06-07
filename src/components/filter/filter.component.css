@@ -1,0 +1,12 @@
+.main {
+    height: max-content;
+    max-width: 300px;
+    min-width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.title{
+    padding-bottom: 10px;
+    padding-top: 15px;
+}

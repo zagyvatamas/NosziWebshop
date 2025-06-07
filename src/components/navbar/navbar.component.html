@@ -1,0 +1,49 @@
+<nav class="navbar middle">
+  <div class="navbar-inner">
+
+    <div class="navbar-brand">
+      <img src="assets/noszilogo.png" alt="Logo" class="logo" />
+    </div>
+
+    <div class="search-container">
+      <input pInputText [(ngModel)]="searchValue" type="text" pSize="large" placeholder="Search" />
+    </div>
+
+    <div class="navbar-toolbox">
+      <ion-icon name="person-circle-outline" class="custom-icon"></ion-icon>
+
+      <select class="lang-select">
+        <option value="hu">HU</option>
+        <option value="en">EN</option>
+      </select>
+
+      <ion-icon 
+        name="basket-outline" 
+        class="custom-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
+        style="cursor: pointer;">
+      </ion-icon>
+    </div>
+  </div>
+</nav>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="middle">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel ">Kosár🛒</h5>
+    </div>
+    
+  </div>
+  <div class="offcanvas-body">
+    <div class="middle">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
