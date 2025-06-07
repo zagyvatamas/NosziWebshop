@@ -2,15 +2,23 @@
     <app-navbar></app-navbar>
 </div>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <div  *ngIf="profile; else errorTpl">
-      <h2>Profil adatok</h2>
-      <p><strong>ID:</strong> {{ profile.id }}</p>
-      <p><strong>Felhasználónév:</strong> {{ profile.username }}</p>
-      <p><strong>Email:</strong> {{ profile.email }}</p>
-      <p><strong>Szerepkör:</strong> {{ profile.role }}</p>
-      <button class="btn btn-danger" (click)="logout()">Kijelentkezés</button>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div  *ngIf="profile; else errorTpl">
+          <h2>Profil adatok</h2>
+          <p><strong>ID:</strong> {{ profile.id }}</p>
+          <p><strong>Felhasználónév:</strong> {{ profile.username }}</p>
+          <p><strong>Email:</strong> {{ profile.email }}</p>
+          <p><strong>Szerepkör:</strong> {{ profile.role }}</p>
+          <!-- <button class="btn btn-primary">Hirdetéseim</button> -->
+          <button class="btn btn-danger" (click)="logout()">Kijelentkezés</button>
+      </div>
     </div>
+    <div class="col-4">
+      <h2>Hirdetéseim:</h2>
+    </div>
+  </div>
 </div>
   
   <ng-template #errorTpl>
