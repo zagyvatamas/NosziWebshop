@@ -33,17 +33,48 @@ export class AdsUploadComponent {
       id:0,
       title:'',
       description:'',
-      image:'',
+      image_path:'',
       user_id:this.authService.getUserId(),
       price:0
     };
   }
 
   Send() {
+    if (!this.ad.title || !this.ad.description || !this.image) {
+      alert('Minden mező kötelező!');
+      return;
+    }
 
+    const formData = new FormData();
+    formData.append('title', this.ad.title);
+    formData.append('description', this.ad.description);
+    formData.append('image_path', this.image);
+    formData.append('price', this.ad.price.toString());
+    formData.append('user_id', this.ad.user_id?.toString() || '');
 
+    this.contentService.addAd(formData).subscribe({
+      next: () => {
+        alert('Hirdetés sikeresen feladva!');
+        this.resetForm();
+        // this.router.navigate(['profile']); 
+      },
+      error: (error) => {
+        console.error('Hiba a hirdetés feladása közben!', error);
+        alert('Hiba történt a feltöltés közben.');
+      }
+    });
+  }
 
-    this.router.navigate(['profile'])
+  resetForm() {
+    this.ad = {
+      id: 0,
+      title: '',
+      description: '',
+      image_path: '',
+      user_id: this.authService.getUserId(),
+      price: 0
+    };
+    this.image = null;
   }
 
 }
