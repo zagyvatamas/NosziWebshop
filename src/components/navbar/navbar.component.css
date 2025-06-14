@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Alapértelmezett beállítás, ha szükséges a tördelés */
 }
 
 .navbar-brand {
@@ -24,11 +24,10 @@
 
 .logo {
   height: 45px;
-  
 }
 
 .search-container {
-  flex: 1 1 auto;
+  flex: 1 1 auto; /* Engedi, hogy a keresőmező növekedjen és zsugorodjon */
   max-width: 600px;
   min-width: 0;
   border: 1px solid black;
@@ -72,35 +71,50 @@
 
 @media (max-width: 768px) {
   .navbar-inner {
+    /* Alapértelmezett flex-direction legyen oszlop, és a tartalmat igazítsa középre */
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    justify-content: flex-start; /* Vagy center, attól függően, hova szeretnéd helyezni a blokkokat */
+    gap: 1rem; /* Hely az elemek között */
   }
 
   .navbar-brand {
-    justify-content: center;
+    display: none; /* Ez a sor elrejti a logót mobil nézetben */
+    order: 0;
+    width: 100%;
+    text-align: center;
   }
 
-  .navbar-toolbox {
-    justify-content: space-around;
-    padding-bottom: 0.5rem;
+  .logo {
+    height: 45px;
   }
 
   .search-container {
-    order: 1;
+    order: 1; /* Keresősáv legyen a második */
+    width: calc(100% - 2rem); /* 100% szélesség, de a padding miatt szűkebb */
+    max-width: 600px; /* Megtartja a max szélességet, ha a képernyő szélesebb, mint a tartalom + padding */
+    margin-top: 1rem; /* Különbség a felső elemtől */
+    /* Biztosítjuk, hogy a flexbox ne zsugorítsa túl kicsire */
+    flex-shrink: 0;
   }
 
   .navbar-toolbox {
-    order: 2;
+    order: 2; /* Ikonok legyenek a harmadikak */
+    width: 100%; /* Kitölti a rendelkezésre álló szélességet */
+    justify-content: center; /* Az ikonokat középre igazítja a rendelkezésre álló 100%-ban */
+    margin-top: 1rem; /* Különbség az előző elemtől */
+    gap: 1.5rem; /* Nagyobb távolság az ikonok között mobilon */
   }
 
-  .navbar-brand {
-    order: 0;
+  /* Fontos: Ha a button-nak van margin-top: 6px; szabálya, az befolyásolhatja
+     a logó és az ikonok vertikális pozícióját. Lehet, hogy ezt is módosítani kell mobilon. */
+  button {
+    margin-top: 0; /* Mobilon nullázzuk a button margin-top-ot, ha zavarja az elrendezést */
   }
 }
 
 button{
-  margin-top: 6px;
+  margin-top: 6px; /* Ezt valószínűleg igazítani kell, ha a navigáció magassága változik */
   background-color: transparent;
   border: none;
 }
-
