@@ -44,11 +44,10 @@ export class AdsUploadComponent {
       alert('Minden mező kötelező!');
       return;
     }
-
     const formData = new FormData();
     formData.append('title', this.ad.title);
     formData.append('description', this.ad.description);
-    formData.append('image_path', this.image);
+    formData.append('image', this.image);
     formData.append('price', this.ad.price.toString());
     formData.append('user_id', this.ad.user_id?.toString() || '');
 

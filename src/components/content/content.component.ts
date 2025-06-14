@@ -26,7 +26,8 @@ export class ContentComponent {
       (ads: any[]) =>{
         this.ads = ads.map(ad => ({
           ...ad,
-          image: `http://localhost:3000${ad.image}`
+          image_path: ad.image_url
+          
         }))
       },
       (error) => {
