@@ -1,5 +1,29 @@
 <div class="main">
     <p-divider />
-    <div class="title middle"><h6>Filter</h6></div>
+    <div class="title middle">
+        <h6>Filter</h6>
+    </div>
     <p-divider />
+    <div class="row pt-3">
+        <div class="col-12">
+            <div class="flex flex-col gap-4">
+                <div *ngFor="let category of categories" class="field-checkbox">
+                    <p-radiobutton [inputId]="category.key" name="category" [value]="category"
+                        [(ngModel)]="selectedCategory" />
+                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2">
+                <label class="form-check-label" for="radio2">
+                    Opció 2
+                </label>
+            </div>
+        </div>
+    </div> -->
 </div>
