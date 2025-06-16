@@ -4,8 +4,6 @@ import { DividerModule } from 'primeng/divider';
 import { Category } from '../../interfaces/category';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-filter',
@@ -16,10 +14,13 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 })
 export class FilterComponent {
   categories: Category[] = [
-    { key: 'cat1', name: 'Háztartási kellékek' },
-    { key: 'cat2', name: 'Kategória 2' },
-    { key: 'cat3', name: 'Kategória 3' },
+    { key: 'books', name: 'Books', description: 'Leírás a könyvek kategóriához.' },
+    { key: 'movies', name: 'Movies', description: 'Leírás a filmek kategóriához.' },
+    { key: 'music', name: 'Music', description: 'Leírás a zenék kategóriához.' }
   ];
 
   selectedCategory?: Category;
+  selectCategory(category: Category) {
+    this.selectedCategory = category;
+  }
 }

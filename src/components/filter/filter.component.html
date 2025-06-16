@@ -1,29 +1,39 @@
 <div class="main">
-    <p-divider />
-    <div class="title middle">
-        <h6>Filter</h6>
-    </div>
-    <p-divider />
-    <div class="row pt-3">
-        <div class="col-12">
-            <div class="flex flex-col gap-4">
-                <div *ngFor="let category of categories" class="field-checkbox">
-                    <p-radiobutton [inputId]="category.key" name="category" [value]="category"
-                        [(ngModel)]="selectedCategory" />
-                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
-                </div>
+  <hr />
+  <div class="title middle">
+    <h6>Filter</h6>
+  </div>
+  <hr />
+  <div class="row pt-3">
+    <div class="col-12">
+      <div class="accordion" id="categoryAccordion">
+        <div class="accordion-item" *ngFor="let category of categories; let i = index">
+          <h2 class="accordion-header" [id]="'heading' + i">
+            <button
+              class="accordion-button"
+              type="button"
+              [class.collapsed]="selectedCategory?.key !== category.key"
+              [attr.aria-expanded]="selectedCategory?.key === category.key ? 'true' : 'false'"
+              data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#collapse' + i"
+              (click)="selectCategory(category)"
+            >
+              {{ category.name }}
+            </button>
+          </h2>
+          <div
+            [id]="'collapse' + i"
+            class="accordion-collapse collapse"
+            [class.show]="selectedCategory?.key === category.key"
+            [attr.aria-labelledby]="'heading' + i"
+            data-bs-parent="#categoryAccordion"
+          >
+            <div class="accordion-body">
+              {{ category.description || 'Nincs leírás ehhez a kategóriához.' }}
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    <!-- <div class="row">
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2">
-                <label class="form-check-label" for="radio2">
-                    Opció 2
-                </label>
-            </div>
-        </div>
-    </div> -->
+  </div>
 </div>
